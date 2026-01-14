@@ -18,6 +18,8 @@ const EXCLUDE_MODULES = new Set([
     '@mastra/rag',
     '@libsql/client',
     'capacitor-stream-http', // local file dependency
+    '@capacitor/android', // mobile-only dependency
+    '@capacitor/ios', // mobile-only dependency
   ])
 
 const dist = webpackPaths.dllPath
