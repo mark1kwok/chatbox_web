@@ -4,7 +4,14 @@ node_modules/
 .cache/
 dist/
 build/
-release/
+release/app/dist/
+release/build/
+release/*.exe
+release/*.dmg
+release/*.AppImage
+
+# But keep release/app/package.json (needed by webpack)
+!release/app/package.json
 
 # Python virtual environment
 .venv/

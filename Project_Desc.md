@@ -158,9 +158,21 @@ const EXCLUDE_MODULES = new Set([
 
 **2. Package.json Scripts**:
 ```json
-"delete-sourcemaps": "ts-node ./.erb/scripts/delete-source-maps.js"
+"delete-sourcemaps": "ts-node ./.erb/scripts/delete-source-maps.js",
+"postinstall": "patch-package"
 ```
-(Note: Changed from `delete-source-maps-runner.js` to `delete-source-maps.js`)
+Changes:
+- Fixed script name: `delete-source-maps-runner.js` → `delete-source-maps.js`
+- Stripped Electron postinstall: Removed `electron-builder install-app-deps`, `check-native-dep.js`, and DLL webpack build
+
+**3. Create release/app/package.json** (for webpack build):
+```json
+{
+  "name": "chatbox-web",
+  "version": "0.0.1",
+  "description": "Chatbox Web Application"
+}
+```
 
 ### Building the Web App
 
