@@ -6,22 +6,13 @@
 # ============================================================
 FROM node:22 AS builder
 
-# Install system dependencies for sharp (image processing)
-RUN apt-get update && apt-get install -y \
-    python3 \
-    make \
-    g++ \
-    && rm -rf /var/lib/apt/lists/*
-
 WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies (use --legacy-peer-deps to resolve dependency conflicts)
-# Set npm timeout to 600 seconds for slow connections
-RUN npm config set fetch-timeout 600000 && \
-    npm install --legacy-peer-deps
+# Install dependencies
+RUN npm install --legacy-peer-deps
 
 # Copy source code
 COPY . .
